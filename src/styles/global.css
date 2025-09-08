@@ -9,7 +9,13 @@ body {
   width: 100%;
   max-width: 80ch;
   padding: 1rem;
-  line-height: 1.5;
+  line-height: 1.5; 
+  background-color: #004141; 
+}
+
+
+.stinky-background
+{
   background-image: url("/Stinky-Dragon-Wiki/images/background-dark.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;

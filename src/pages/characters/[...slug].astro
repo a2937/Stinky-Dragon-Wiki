@@ -1,0 +1,26 @@
+---
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+
+import { getCollection } from "astro:content";
+import CharacterBioLayout from "../../layouts/CharacterBioLayout.astro";
+import { render } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const entries = await getCollection("characters");
+  return entries.map((entry) => ({
+     params: { slug: entry.id },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<CharacterBioLayout frontmatter={entry.data}>
+  <Content />
+</CharacterBioLayout>
