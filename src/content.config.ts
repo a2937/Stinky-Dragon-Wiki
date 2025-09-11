@@ -24,4 +24,22 @@ const characters = defineCollection({
   }),
 });
 
-export const collections = {characters}
+/**
+ * TODO: Determine how to add thumbnails to the schema 
+ */
+const episodes = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/episodes" }),
+  schema: z.object({
+    campaign: z.string(),
+    arc: z.string(),
+    episodeNumber: z.number(),
+    releaseDate: z.coerce.date(),
+    runtime: z.string(),
+    youtubeLink: z.string(),
+    spotifyLink: z.string(),
+    previousEpisode: z.string(), 
+    nextEpisode: z.string()
+  }),
+});
+
+export const collections = {characters,episodes}
